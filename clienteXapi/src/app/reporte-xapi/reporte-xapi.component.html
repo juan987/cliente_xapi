@@ -1,0 +1,33 @@
+<div class="container" id="contenedor">
+  <h1>
+  {{title}}
+</h1>
+
+<!-- Autocomplete el 9dic16  -->
+<br/>
+<div id="autocomplete">
+    <form  [formGroup]="searchForm">
+        <label for="searchField">Buscar "actor" por nombre (Autocomplete)</label>
+        <br/>
+        <input type="text" id="searchField" name="searchField"
+                                    [formControl]="searchForm.controls['searchField']"> 
+        <ul>
+            <li *ngFor="let result of results | async">{{result.titulo}}</li>
+        </ul>     
+    </form>    
+</div>
+
+    <!-- FIN de Autocomplete el 9dic16  -->
+
+
+
+
+    <footer id="pie">
+        <section>
+            © 2016 Diseñador: Juan Miguel Navarro Lopez
+        </section>
+    </footer>
+
+
+
+    </div>

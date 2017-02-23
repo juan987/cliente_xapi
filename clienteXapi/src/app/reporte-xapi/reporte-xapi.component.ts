@@ -43,7 +43,7 @@ export class ReporteXapiComponent implements OnInit {
                     //.switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
                     .switchMap(fieldValue => 
                         //console.log('en switch map, valor de fieldvalue: ' +fieldValue);
-                        this.http.get(`http://localhost:3000/peliculas/autocomplete/` +fieldValue))
+                        this.http.get(`http://localhost:3000/actor/autocomplete/` +fieldValue))
                     .map(res => res.json());
     //***********************************
     // FIN de Autocomplete

@@ -12,7 +12,7 @@
         <input type="text" id="searchField" name="searchField"
                                     [formControl]="searchForm.controls['searchField']"> 
         <ul>
-            <li *ngFor="let result of results | async">{{result.titulo}}</li>
+            <li *ngFor="let result of results | async">{{result.actor.name}}</li>
         </ul>     
     </form>    
 </div>

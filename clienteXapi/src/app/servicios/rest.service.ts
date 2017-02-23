@@ -9,15 +9,18 @@ import { Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class RestService {
 
-  private urlGet = 'http://localhost:3000/reporte1';  // URL para get el json con la lista de peliculas
+  private urlPost = 'http://localhost:3000/reporte1';  // URL para get el json con la lista de peliculas
 
   constructor(private http: Http) { }
 
-  getLearningReport1(): Observable<any[]>{
-    return this.http.get(this.urlGet)
+  getLearningReport1(datosForm: DatosForm): Observable<any[]>{
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.urlPost, datosForm, options)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+
 
 
 

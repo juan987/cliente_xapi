@@ -44,9 +44,7 @@ export class ReporteXapiComponent implements OnInit {
             'searchField': ['']
         });
 
-        //var ctrl = this.searchForm.controls.searchField;
         var ctrl = this.searchForm.controls['searchField']
-        //var ctrl = this.searchForm.controls.searchField;
 
         this.results = ctrl.valueChanges
                     .debounceTime(500)
@@ -68,13 +66,13 @@ export class ReporteXapiComponent implements OnInit {
     clickGeneraInforme(): void{
       console.log("Click en el boton generar informe");
       console.log('Los datos de busqueda son: ', this.datosForm.toString())
-      this.getReport_1();
+      this.getReport_1(this.datosForm);
     }
 
     //Metodos relacionados con http
-    getReport_1():void {
+    getReport_1(datosForm: DatosForm):void {
       //TODO llamar al server con los parametros para obtener el tipo de reporte solicitado
-          this.restService.getLearningReport1()
+          this.restService.getLearningReport1(datosForm)
                      .subscribe(
                        learningReport1 => {this.learningReport1 = learningReport1,
                                           console.log('El array de reports tiene:  ', this.learningReport1.length)},
@@ -84,7 +82,6 @@ export class ReporteXapiComponent implements OnInit {
 
     clickGuardarNombre(result: any):void {
       this.datosForm.name = result.actor.name;
-
     }
 
 

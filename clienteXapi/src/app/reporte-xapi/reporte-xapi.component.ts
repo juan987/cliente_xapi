@@ -40,20 +40,7 @@ export class ReporteXapiComponent implements OnInit {
     //para los temas de 
     // ReactiveFormsModule gives us directives like formControl and ngFormGroup
     //******************************************************************************************* 
-        this.searchForm = this.fb.group({
-            'searchField': ['']
-        });
-
-        var ctrl = this.searchForm.controls['searchField']
-
-        this.results = ctrl.valueChanges
-                    .debounceTime(500)
-                    .distinctUntilChanged()
-                    //.switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
-                    .switchMap(fieldValue => 
-                        //console.log('en switch map, valor de fieldvalue: ' +fieldValue);
-                        this.http.get(`http://localhost:3000/actor/autocomplete/` +fieldValue))
-                    .map(res => res.json());
+      this.activarAutocompleteDeNombre()
     //***********************************
     // FIN de Autocomplete
     //***********************************
@@ -82,7 +69,24 @@ export class ReporteXapiComponent implements OnInit {
 
     clickGuardarNombre(result: any):void {
       this.datosForm.name = result.actor.name;
+      this.activarAutocompleteDeNombre()
     }
 
+    activarAutocompleteDeNombre(){
+                    this.searchForm = this.fb.group({
+            'searchField': ['']
+        });
+
+        var ctrl = this.searchForm.controls['searchField']
+
+        this.results = ctrl.valueChanges
+                    .debounceTime(500)
+                    .distinctUntilChanged()
+                    //.switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
+                    .switchMap(fieldValue => 
+                        //console.log('en switch map, valor de fieldvalue: ' +fieldValue);
+                        this.http.get(`http://localhost:3000/actor/autocomplete/` +fieldValue))
+                    .map(res => res.json());
+    }
 
 }// fin de ReporteXapiComponent

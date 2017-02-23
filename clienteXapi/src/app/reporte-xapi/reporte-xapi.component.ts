@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // Add the RxJS Observable operators. para gestionar HTTP
 import './rxjs-operators';
+import {DatosForm} from '../modelo-datos/datos-form';
 
 //Para gestionar el autocomplete
 import {FormBuilder, Validators, FormGroup  } from '@angular/forms';
@@ -19,6 +20,8 @@ export class ReporteXapiComponent implements OnInit {
   //Variables de autocomplete
   searchForm: FormGroup;
   results: Observable<any>;
+  private datosForm: DatosForm;
+  
 
 
     constructor(private fb: FormBuilder, private http: Http) { 
@@ -48,6 +51,7 @@ export class ReporteXapiComponent implements OnInit {
     //***********************************
     // FIN de Autocomplete
     //***********************************
+    this.datosForm = new DatosForm();
     }//Fin del constructor
 
     ngOnInit() {

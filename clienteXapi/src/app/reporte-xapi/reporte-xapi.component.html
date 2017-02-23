@@ -1,33 +1,106 @@
 <div class="container" id="contenedor">
   <h1>
   {{title}}
-</h1>
+  </h1>
+    <h1>Formulario de reportes de xAPI</h1>
+	<form role="form" class="form-horizontal" #form="ngForm" id="miFormulario" action="#">
+    <fieldset>
+        <legend>Rellene los datos solicitados:</legend>
+        <div id="rosa">
 
-<!-- Autocomplete el 9dic16  -->
-<br/>
-<div id="autocomplete">
-    <form  [formGroup]="searchForm">
-        <label for="searchField">Buscar "actor" por nombre (Autocomplete)</label>
-        <br/>
-        <input type="text" id="searchField" name="searchField"
-                                    [formControl]="searchForm.controls['searchField']"> 
-        <ul>
-            <li *ngFor="let result of results | async">{{result.actor.name}}</li>
-        </ul>     
-    </form>    
-</div>
+            <div class="form-group">
+                <!-- Por ahora, quito el icono -->
+                <!--i class="material-icons prefix">account_circle</i-->
+                <label for="name" class="col-sm-2 control-label">Nombre</label> 
+                <div class="col-sm-10">
+                    <!--PARA QUITAR EL AUTOFOCUS input type="text" #titulo="ngModel" class="form-control" id="titulo" 
+                    name="titulo" required autofocus [(ngModel)]="peliculaPojo.titulo"/-->
+                    <input type="text" #name="ngModel" class="form-control" id="name" name="name" required [(ngModel)]="datosForm.name"/>
+                    <!-- Mensaje de error para titulo-->
+                    <br/>
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                                Nombre requerido
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="verbo" class="col-sm-2 control-label">Verbo</label> 
+                <div class="col-sm-10">
+                    <input type="text" #verbo="ngModel" class="form-control" id="verbo" name="verbo" required [(ngModel)]="datosForm.verb" />
+                <!-- Mensaje de error para director-->
+                    <br/>
+                    <div [hidden]="verbo.valid || verbo.pristine" class="alert alert-danger">
+                                Director requerido
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha1" class="col-sm-2 control-label">Fecha inicial</label> 
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="fecha1" name="fecha1" required [(ngModel)]="datosForm.date1"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha2" class="col-sm-2 control-label">Fecha final</label> 
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="fecha2" name="fecha2" required [(ngModel)]="datosForm.date2"/>
+                </div>
+            </div>
+
+            <!--div class="form-group">
+                <label for="valoracion" class="col-sm-2 control-label">Valoración</label> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="valoracion" list="cafes" name="valoracion" required [(ngModel)]="peliculaPojo.valoracion">
+                </div>
+                <datalist id="cafes">
+                    <option label="Mala" 
+                            value="Mala">
+                    <option label="Regular" 
+                            value="Regular">
+                    <option label="Buena" value="Buena">
+                    <option label="Muy Buena" value="Muy Buena">
+                    <option label="Excelente" value="Excelente">
+                </datalist>
+            </div-->
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="reset" class="btn btn-primary" 
+                                        (click)="muestraBotonesModAndDel = true"> 
+                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar(); form.reset()"/>
+                <!--input type="button" class="btn btn-primary" id="modificar" value="Modificar" 
+                                        (click)="clickModificar(); form.reset()" [disabled]="muestraBotonesModAndDel" />
+                <input type="button" class="btn btn-primary" id="borrar" value="Borrar" 
+                                        (click)="clickBorrar()"  [disabled]="muestraBotonesModAndDel"/>
+                <input class="elementoOculto" type="button" id="borrar" value="Borrar"/-->
+            </div>
+        </div>
+    </fieldset>
+	</form>
+    <!-- Autocomplete -->
+    <br/>
+    <div id="autocomplete">
+        <form  [formGroup]="searchForm">
+            <label for="searchField">Buscar "actor" por nombre (Autocomplete)</label>
+            <br/>
+            <input type="text" id="searchField" name="searchField"
+                                        [formControl]="searchForm.controls['searchField']"> 
+            <ul>
+                <li *ngFor="let result of results | async">{{result.actor.name}}</li>
+            </ul>     
+        </form>    
+    </div>
 
     <!-- FIN de Autocomplete el 9dic16  -->
-
-
-
-
+    <br/>
     <footer id="pie">
         <section>
             © 2016 Diseñador: Juan Miguel Navarro Lopez
         </section>
     </footer>
-
-
-
-    </div>
+</div>

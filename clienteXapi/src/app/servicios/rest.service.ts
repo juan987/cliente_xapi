@@ -1,8 +1,49 @@
 import { Injectable } from '@angular/core';
+import {DatosForm} from '../modelo-datos/datos-form';
+
+
+import { Http, Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
+import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class RestService {
 
-  constructor() { }
+  private urlGet = 'http://localhost:3000/reporte1';  // URL para get el json con la lista de peliculas
 
-}
+  constructor(private http: Http) { }
+
+  getLearningReport1(): Observable<any[]>{
+    return this.http.get(this.urlGet)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+
+
+
+
+
+//*******************************************************************************************
+  private extractData(res: Response) {
+    console.log("En RestService service, la response es:   " +res);
+    let datos = res.json();
+    console.log("En RestService service, el body es   " +datos);
+    return datos;    
+  }
+  
+  private handleError (error: Response | any) {
+    // In a real world app, we might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
+
+}//Fin de RestService

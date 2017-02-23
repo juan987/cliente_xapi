@@ -72,7 +72,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="reset" class="btn btn-primary" 
                                         (click)="muestraBotonesModAndDel = true"> 
-                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGuardar(); form.reset()"/>
+                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGeneraInforme(); form.reset()"/>
                 <!--input type="button" class="btn btn-primary" id="modificar" value="Modificar" 
                                         (click)="clickModificar(); form.reset()" [disabled]="muestraBotonesModAndDel" />
                 <input type="button" class="btn btn-primary" id="borrar" value="Borrar" 
@@ -82,7 +82,7 @@
         </div>
     </fieldset>
 	</form>
-    <!-- Autocomplete -->
+    <!-- Autocomplete nombres-->
     <br/>
     <div id="autocomplete">
         <form  [formGroup]="searchForm">
@@ -91,7 +91,7 @@
             <input type="text" id="searchField" name="searchField"
                                         [formControl]="searchForm.controls['searchField']"> 
             <ul>
-                <li *ngFor="let result of results | async">{{result.actor.name}}</li>
+                <li *ngFor="let result of results | async" (click)="clickGuardarNombre(result)">{{result.actor.name}}</li>
             </ul>     
         </form>    
     </div>

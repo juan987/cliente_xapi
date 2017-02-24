@@ -26,6 +26,8 @@ export class ReporteXapiComponent implements OnInit {
   searchForm: FormGroup;
   results: Observable<any>;
   datosForm: DatosForm;
+  searchFormVerbos: FormGroup;
+  resultverbos: Observable<any>;
 
   
 
@@ -41,6 +43,7 @@ export class ReporteXapiComponent implements OnInit {
     // ReactiveFormsModule gives us directives like formControl and ngFormGroup
     //******************************************************************************************* 
       this.activarAutocompleteDeNombre()
+      this.activarAutocompleteDeVerbos()
     //***********************************
     // FIN de Autocomplete
     //***********************************
@@ -72,8 +75,13 @@ export class ReporteXapiComponent implements OnInit {
       this.activarAutocompleteDeNombre()
     }
 
+    clickGuardarVerbo(resultverb: any):void {
+      this.datosForm.verb = resultverb.verb.id;
+      this.activarAutocompleteDeVerbos()
+    }
+
     activarAutocompleteDeNombre(){
-                    this.searchForm = this.fb.group({
+             this.searchForm = this.fb.group({
             'searchField': ['']
         });
 
@@ -86,6 +94,23 @@ export class ReporteXapiComponent implements OnInit {
                     .switchMap(fieldValue => 
                         //console.log('en switch map, valor de fieldvalue: ' +fieldValue);
                         this.http.get(`http://localhost:3000/actor/autocomplete/` +fieldValue))
+                    .map(res => res.json());
+    }
+
+    activarAutocompleteDeVerbos(){
+             this.searchFormVerbos = this.fb.group({
+            'searchFieldVerbos': ['']
+        });
+
+        var ctrl = this.searchFormVerbos.controls['searchFieldVerbos']
+
+        this.resultverbos = ctrl.valueChanges
+                    .debounceTime(500)
+                    .distinctUntilChanged()
+                    //.switchMap(fieldValue => this.http.get(`http://localhost:3001/api/search?term=${fieldValue}`))
+                    .switchMap(fieldValue => 
+                        //console.log('en switch map, valor de fieldvalue: ' +fieldValue);
+                        this.http.get(`http://localhost:3000/actor/autocompleteverbos/` +fieldValue))
                     .map(res => res.json());
     }
 

@@ -71,8 +71,8 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="reset" class="btn btn-primary" 
-                                        (click)="muestraBotonesModAndDel = true"> 
-                <input type="button" class="btn btn-primary" id="guardar" value="Guardar" (click)="clickGeneraInforme(); form.reset()"/>
+                                        (click)="muestraBotonesModAndDel = true; learningReport1 = null"> 
+                <input type="button" class="btn btn-primary" id="guardar" value="Generar reporte" (click)="clickGeneraInforme(); form.reset()"/>
                 <!--input type="button" class="btn btn-primary" id="modificar" value="Modificar" 
                                         (click)="clickModificar(); form.reset()" [disabled]="muestraBotonesModAndDel" />
                 <input type="button" class="btn btn-primary" id="borrar" value="Borrar" 
@@ -93,10 +93,19 @@
             <ul>
                 <li *ngFor="let result of results | async" (click)="clickGuardarNombre(result)">{{result.actor.name}}</li>
             </ul>     
-        </form>     
+        </form>
+        <form  [formGroup]="searchFormVerbos" class="">
+            <label for="searchFieldVerbos">Buscar "verbo" por URI (Autocomplete)</label>
+            <br/>
+            <input type="text" id="searchFieldVerbos" name="searchFieldVerbos"
+                                        [formControl]="searchFormVerbos.controls['searchFieldVerbos']"> 
+            <ul>
+                <li *ngFor="let resultverb of resultverbos | async" (click)="clickGuardarVerbo(resultverb)">{{resultverb.verb.id}}</li>
+            </ul>     
+        </form>      
     </div>
 
-    <div id="autocompleteVerbo">
+    <!--div id="autocompleteVerbo">
         <form  [formGroup]="searchForm">
             <label for="searchField">Buscar "verbo" por URI (Autocomplete)</label>
             <br/>
@@ -106,7 +115,7 @@
                 <li *ngFor="let result of results | async" (click)="clickGuardarNombre(result)">{{result.actor.name}}</li>
             </ul>     
         </form>   
-    </div>
+    </div-->
 
     <!-- Reporte 1-->
     <br/>

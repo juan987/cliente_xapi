@@ -9,6 +9,9 @@ import {RestService} from '../servicios/rest.service';
 })
 export class ActorsComponent implements OnInit {
   title = 'Datos de Actors';
+      //Variables para servicios rest
+  errorMessage: string;
+  arrayActors: any[];
 
   constructor(private restService: RestService) { }
 
@@ -17,7 +20,13 @@ export class ActorsComponent implements OnInit {
   }
 
   getActores(){
-
+      this.restService.getActors()
+              .subscribe(
+                arrayActors => {this.arrayActors = arrayActors;
+                                  console.log('El array de reports tiene:  ', this.arrayActors.length);
+                                  console.log('El array de reports tiene:  ', this.arrayActors[0].actor.name)
+                               },
+                error =>  this.errorMessage = <any>error);
   }
 
   clickRecargaColeccionActors(){

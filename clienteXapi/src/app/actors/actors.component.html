@@ -16,15 +16,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let actor of actors, let i = index;"
-                            [ngClass]="{filaClickada: peli.booelanIsActive}"
-                            (click)="
-                                    peli.booelanIsActive = !peli.booelanIsActive;
-                                    muestraBotonesModAndDel = false;
-                                    clickEnFila(peli, i); ">
-                      <td>{{actor.name}}</td>
-                      <td>{{actor.mbox}}</td>
-                      <td>{{actor.objectType}}</td>
+                    <tr *ngFor="let datoActor of arrayActors, let i = index;">
+                      <td>{{datoActor.actor.name}}</td>
+                      <td>{{datoActor.actor.mbox}}</td>
+                      <td>{{datoActor.actor.objectType}}</td>
                     </tr>
                 </tbody>
             </table>

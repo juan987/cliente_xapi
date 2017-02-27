@@ -8,11 +8,13 @@ import { ReporteXapiComponent } from './reporte-xapi/reporte-xapi.component';
 
 //agregado ReactiveFormsModule   para el autocomplete
 import { ReactiveFormsModule } from '@angular/forms';
+import { ActorsComponent } from './actors/actors.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReporteXapiComponent
+    ReporteXapiComponent,
+    ActorsComponent
   ],
   imports: [
     BrowserModule,

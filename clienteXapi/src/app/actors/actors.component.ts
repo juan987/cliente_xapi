@@ -17,7 +17,11 @@ export class ActorsComponent implements OnInit {
   }
 
   getActores(){
-    
+
+  }
+
+  clickRecargaColeccionActors(){
+    //TODO: forzar al server a recargar la coleccion de Actors
   }
 
 

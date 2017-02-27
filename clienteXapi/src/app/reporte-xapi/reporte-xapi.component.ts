@@ -77,7 +77,7 @@ export class ReporteXapiComponent implements OnInit {
     }
 
     clickGuardarVerbo(resultverb: any):void {
-      this.datosForm.verb = resultverb.verb.id;
+      this.datosForm.verb = resultverb.verbo;
       this.activarAutocompleteDeVerbos()
     }
 

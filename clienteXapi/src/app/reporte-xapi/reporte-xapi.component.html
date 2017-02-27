@@ -102,7 +102,7 @@
                                         [formControl]="searchFormVerbos.controls['searchFieldVerbos']" autocomplete="off"> 
             <ul>
                 <!--li *ngFor="let resultverb of resultverbos | async" (click)="clickGuardarVerbo(resultverb)">{{resultverb.verb.id}}</li-->
-                <li *ngFor="let resultverb of resultverbos | async" (click)="clickGuardarVerbo(resultverb)">{{resultverb.verb.id}}</li>
+                <li *ngFor="let resultverb of resultverbos | async" (click)="clickGuardarVerbo(resultverb)">{{resultverb.verbo}}</li>
             </ul>     
         </form>      
     </div>

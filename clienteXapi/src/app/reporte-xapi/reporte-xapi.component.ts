@@ -71,7 +71,8 @@ export class ReporteXapiComponent implements OnInit {
 
 
     clickGuardarNombre(result: any):void {
-      this.datosForm.name = result.actor.name;
+      //this.datosForm.name = result.actor.name;
+      this.datosForm.name = result._id;
       this.activarAutocompleteDeNombre()
     }
 

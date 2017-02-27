@@ -89,17 +89,19 @@
             <label for="searchField">Buscar "actor" por nombre (Autocomplete)</label>
             <br/>
             <input type="text" id="searchField" name="searchField"
-                                        [formControl]="searchForm.controls['searchField']"> 
+                                        [formControl]="searchForm.controls['searchField']" autocomplete="off"> 
             <ul>
-                <li *ngFor="let result of results | async" (click)="clickGuardarNombre(result)">{{result.actor.name}}</li>
+                <!--li *ngFor="let result of results | async" (click)="clickGuardarNombre(result)">{{result.actor.name}}</li-->
+                <li *ngFor="let result of results | async" (click)="clickGuardarNombre(result)">{{result._id}}</li>
             </ul>     
         </form>
         <form  [formGroup]="searchFormVerbos" class="">
             <label for="searchFieldVerbos">Buscar "verbo" por URI (Autocomplete)</label>
             <br/>
             <input type="text" id="searchFieldVerbos" name="searchFieldVerbos"
-                                        [formControl]="searchFormVerbos.controls['searchFieldVerbos']"> 
+                                        [formControl]="searchFormVerbos.controls['searchFieldVerbos']" autocomplete="off"> 
             <ul>
+                <!--li *ngFor="let resultverb of resultverbos | async" (click)="clickGuardarVerbo(resultverb)">{{resultverb.verb.id}}</li-->
                 <li *ngFor="let resultverb of resultverbos | async" (click)="clickGuardarVerbo(resultverb)">{{resultverb.verb.id}}</li>
             </ul>     
         </form>      

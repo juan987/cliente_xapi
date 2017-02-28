@@ -69,19 +69,19 @@
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover table-condensed">                
                 <thead>
-                    <tr>
-                        <th>tipo</th>
+                    <tr>                      
                         <th>definicion.name</th>
                         <th>definicion.descripcion</th>
                         <th>uri</th>
+                        <th>tipo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let datoTarget of arrayTargets, let i = index;">
-                      <td>{{datoTarget.objeto.objectType}}</td>
+                    <tr *ngFor="let datoTarget of arrayTargets, let i = index;">                      
                       <td>{{datoTarget.objeto.definition.name}}</td>
                       <td>{{datoTarget.objeto.definition.description}}</td>
                       <td>{{datoTarget.objeto.id}}</td>
+                      <td>{{datoTarget.objeto.objectType}}</td>
                     </tr>
                 </tbody>
             </table>

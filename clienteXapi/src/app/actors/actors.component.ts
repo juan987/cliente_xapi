@@ -35,6 +35,7 @@ getTargets(){
                                   
                                   for(let i=0; i<this.arrayTargets.length; i++){
                                     if(this.arrayTargets[i].objeto.definition !== null){
+                                       //el stringify es para mostrar todo el objeto name y description, por que el field lenguaje es variable
                                        this.arrayTargets[i].objeto.definition.name = JSON.stringify(this.arrayTargets[i].objeto.definition.name);
                                        this.arrayTargets[i].objeto.definition.description = JSON.stringify(this.arrayTargets[i].objeto.definition.description);
                                     }else{
@@ -55,6 +56,7 @@ getVerbos(){
               .subscribe(
                 arrayVerbos => {this.arrayVerbos = arrayVerbos;
                                   for(let i=0; i<this.arrayVerbos.length; i++){
+                                    //el stringify es para mostrar todo el objeto display, por que el field lenguaje es variable
                                     this.arrayVerbos[i].verbo.display = JSON.stringify(this.arrayVerbos[i].verbo.display);
                                   }
                                   console.log('El array de verbos tiene:  ', this.arrayVerbos.length);

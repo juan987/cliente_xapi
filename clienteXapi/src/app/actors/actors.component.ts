@@ -8,23 +8,38 @@ import {RestService} from '../servicios/rest.service';
   providers: [RestService]
 })
 export class ActorsComponent implements OnInit {
-  title = 'Datos de Actors';
+  title = 'Actors';
+  title2 = 'Verbs';
       //Variables para servicios rest
   errorMessage: string;
   arrayActors: any[];
+  arrayVerbos: any[];
+
+  
 
   constructor(private restService: RestService) { }
 
   ngOnInit() {
     this.getActores();
+    this.getVerbos();
   }
 
-  getActores(){
+  getVerbos(){
+      this.restService.getVerbs()
+              .subscribe(
+                arrayVerbos => {this.arrayVerbos = arrayVerbos;
+                                  console.log('El array de verbos tiene:  ', this.arrayVerbos.length);
+                                  console.log('El array de verbos tiene:  ', this.arrayVerbos[0].verbo.id)
+                               },
+                error =>  this.errorMessage = <any>error);
+  }
+
+getActores(){
       this.restService.getActors()
               .subscribe(
                 arrayActors => {this.arrayActors = arrayActors;
-                                  console.log('El array de reports tiene:  ', this.arrayActors.length);
-                                  console.log('El array de reports tiene:  ', this.arrayActors[0].actor.name)
+                                  console.log('El array de actors tiene:  ', this.arrayActors.length);
+                                  console.log('El array de actors tiene:  ', this.arrayActors[0].actor.name)
                                },
                 error =>  this.errorMessage = <any>error);
   }

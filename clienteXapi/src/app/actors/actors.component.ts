@@ -10,10 +10,12 @@ import {RestService} from '../servicios/rest.service';
 export class ActorsComponent implements OnInit {
   title = 'Actors';
   title2 = 'Verbs';
+  title3 = 'Targets';
       //Variables para servicios rest
   errorMessage: string;
   arrayActors: any[];
   arrayVerbos: any[];
+  arrayTargets: any[];
 
   
 
@@ -22,9 +24,20 @@ export class ActorsComponent implements OnInit {
   ngOnInit() {
     this.getActores();
     this.getVerbos();
+    this.getTargets();
   }
 
-  getVerbos(){
+getTargets(){
+      this.restService.getTargets()
+              .subscribe(
+                arrayTargets => {this.arrayTargets = arrayTargets;
+                                  console.log('El array de verbos tiene:  ', this.arrayTargets.length);
+                                  console.log('El array de verbos tiene:  ', this.arrayTargets[0].objeto.id)
+                               },
+                error =>  this.errorMessage = <any>error);
+  }
+
+getVerbos(){
       this.restService.getVerbs()
               .subscribe(
                 arrayVerbos => {this.arrayVerbos = arrayVerbos;

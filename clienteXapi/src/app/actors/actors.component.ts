@@ -31,8 +31,21 @@ getTargets(){
       this.restService.getTargets()
               .subscribe(
                 arrayTargets => {this.arrayTargets = arrayTargets;
-                                  console.log('El array de verbos tiene:  ', this.arrayTargets.length);
-                                  console.log('El array de verbos tiene:  ', this.arrayTargets[0].objeto.id)
+                                  //en arrayTargets[].definicion.name = JSON.stringify(arrayTargets[].definicion.name)
+                                  
+                                  for(let i=0; i<this.arrayTargets.length; i++){
+                                    if(this.arrayTargets[i].objeto.definition !== null){
+                                       this.arrayTargets[i].objeto.definition.name = JSON.stringify(this.arrayTargets[i].objeto.definition.name);
+                                       this.arrayTargets[i].objeto.definition.description = JSON.stringify(this.arrayTargets[i].objeto.definition.description);
+                                    }else{
+                                      this.arrayTargets[i].objeto.definition = {name:""};
+                                      this.arrayTargets[i].objeto.definition = {description:""};
+                                    }
+                                    console.log('stringify de definicion en target: ' +i, JSON.stringify(this.arrayTargets[i].objeto.detinition))
+                                  }//Fin del for
+                                  
+                                  console.log('El array de targets tiene:  ', this.arrayTargets.length);
+                                  console.log('El array de targets tiene:  ', this.arrayTargets[0].objeto.id)
                                },
                 error =>  this.errorMessage = <any>error);
   }
@@ -41,6 +54,9 @@ getVerbos(){
       this.restService.getVerbs()
               .subscribe(
                 arrayVerbos => {this.arrayVerbos = arrayVerbos;
+                                  for(let i=0; i<this.arrayVerbos.length; i++){
+                                    this.arrayVerbos[i].verbo.display = JSON.stringify(this.arrayVerbos[i].verbo.display);
+                                  }
                                   console.log('El array de verbos tiene:  ', this.arrayVerbos.length);
                                   console.log('El array de verbos tiene:  ', this.arrayVerbos[0].verbo.id)
                                },

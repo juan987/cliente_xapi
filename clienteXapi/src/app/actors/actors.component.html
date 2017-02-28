@@ -71,14 +71,16 @@
                 <thead>
                     <tr>
                         <th>tipo</th>
-                        <th>definicion</th>
+                        <th>definicion.name</th>
+                        <th>definicion.descripcion</th>
                         <th>uri</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let datoTarget of arrayTargets, let i = index;">
                       <td>{{datoTarget.objeto.objectType}}</td>
-                      <td>{{datoTarget.objeto.definition}}</td>
+                      <td>{{datoTarget.objeto.definition.name}}</td>
+                      <td>{{datoTarget.objeto.definition.description}}</td>
                       <td>{{datoTarget.objeto.id}}</td>
                     </tr>
                 </tbody>

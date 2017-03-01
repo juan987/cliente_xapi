@@ -1,0 +1,157 @@
+  thead tr {
+    cursor: pointer;
+    background-color: lightseagreen;
+  }
+
+  tbody tr {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+    text-align: right;
+  }
+
+  tbody tr.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+  }
+  tbody tr:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  }
+
+  tbody tr.filaClickada {
+    background-color: #01579B;
+    color: #fff;
+  }
+
+  /*  
+    Componentes css del proyecto peliculas con jquery y bootstrap
+  */
+
+  	#rosa input:valid {
+		background: pink;
+	}
+	#rosa input:invalid {
+		background: red;
+	}
+
+	.elementoOculto {
+		display: none;
+	}
+	
+	footer#pie > section{
+    padding-right: 10px;
+    text-align: center;
+  }
+
+  .pruebaFilaClicked {
+    		background: red;
+  }
+
+
+  /* stilos requeridos en el form para ver lo rojito y lo verde */
+  .ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+  }
+
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+/* Estlos para el lateral(que tiene el chat), me los traje del ejemplo ferrari */
+  section#lateral {
+    width: 20%;
+    min-width: 150px;
+    float: right;
+    padding-left: 15px;
+
+}
+
+  section#lateral #miChat {
+
+    height: 250px;
+    overflow: scroll;
+    overflow-x: hidden;
+    
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+section#lateral a {
+    text-decoration: none;
+    color: white;
+}
+section ul {
+    padding: 0px;
+    box-shadow: 5px 5px 0 #333;
+}
+section ul li{
+    /* cambio la lista para que esté en la misma linea */
+    display: block;
+    background: rgba(0,0,0,.5);
+    padding: 10px;
+}
+
+#contenedor {
+    /* background: white; */
+    /* indica margenes top-bottom y left-right
+    Si indico el segundo como auto, le estoy indicando que se centre */
+    margin: 0 auto;
+    /* coge el ancho del padre, que es el body */
+    width:auto;
+    /* Si deseo no ocupar todo el ancho, puedo indicar los límites.*/
+    /* max-width: 1000px;  */
+    /* En vez de introducir un margin a cada elemento dentro del contenedor, 
+    defino un border y consigo el mismo efecto */
+
+    /* quito el borde */
+    /* border: 5px solid red;
+    border-radius: 5px; */
+}
+
+/*Para distinguir filas pares e impares en el chat y que se lea mejor*/
+.miChatClass:nth-child(odd) {
+    background: white;
+}
+
+.miChatClass:nth-child(even) {
+    background: lightgreen;
+}
+
+
+/*Autocomplete*/
+#searchField{
+  width: 70%;
+}
+
+#autocomplete{
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#autocompleteVerbo{
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
+    float: right;
+}
+
+#inlinedisplay {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+}

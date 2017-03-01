@@ -13,6 +13,7 @@ export class RestService {
   private urlGet = 'http://localhost:3000/collection/actor';  // URL para get el json con la lista de peliculas
   private urlGet2 = 'http://localhost:3000/collection/verb';  // URL para get el json con la lista de peliculas
   private urlGet3 = 'http://localhost:3000/collection/target';  // URL para get el json con la lista de peliculas
+  private urlGet4 = 'http://localhost:3000/arbol/actividades';  // URL para get el json con la lista de peliculas
 
   constructor(private http: Http) { }
 
@@ -25,6 +26,11 @@ export class RestService {
   }
 
 
+  getArbolDeActividades(): Observable<any[]>{
+    return this.http.get(this.urlGet4)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
 
   getActors(): Observable<any[]>{
     return this.http.get(this.urlGet)

@@ -5,6 +5,8 @@ import {DatosForm} from '../modelo-datos/datos-form';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import { Headers, RequestOptions } from '@angular/http';
+import {TreeNode} from 'primeng/primeng';
+import {TreeTableModule,SharedModule} from 'primeng/primeng';
 
 @Injectable()
 export class RestService {
@@ -26,7 +28,7 @@ export class RestService {
   }
 
 
-  getArbolDeActividades(): Observable<any[]>{
+  getArbolDeActividades(): Observable<TreeNode[]>{
     return this.http.get(this.urlGet4)
                     .map(this.extractData)
                     .catch(this.handleError);

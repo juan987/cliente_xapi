@@ -10,7 +10,7 @@ import {Growl} from 'primeng/primeng';
 import {Message,MenuItem,TreeNode} from 'primeng/primeng';
 import {Tree} from 'primeng/primeng';
 
-
+import {TreeTableModule,SharedModule} from 'primeng/primeng';
 
 
 
@@ -24,7 +24,7 @@ import {Tree} from 'primeng/primeng';
 })
 export class ActivityTreeComponent implements OnInit {
   title = 'Arbol de actividades';
-  arbolJson: {hola: 'kkk'};
+  //arbolJson: {hola: 'kkk'};
   errorMessage: string;
 
   //PrimeNg tree
@@ -67,15 +67,6 @@ export class ActivityTreeComponent implements OnInit {
     ];
   }
 
-
-/*
-  this.nodeService.getFiles().then(files => {
-      this.filesTree8 = [{
-          label: 'Root',
-          children: files
-      }];
-  });
-*/
 
 getArbolActividades(){
       this.restService.getArbolDeActividades()

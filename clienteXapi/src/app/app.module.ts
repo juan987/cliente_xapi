@@ -11,19 +11,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActorsComponent } from './actors/actors.component';
 import { ActivityTreeComponent } from './activity-tree/activity-tree.component';
 
+//Para PrimeNg, sin esto no me funcionaba
+import {TreeModule, GrowlModule} from 'primeng/primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
     ReporteXapiComponent,
     ActorsComponent,
-    ActivityTreeComponent
+    ActivityTreeComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     JsonpModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TreeModule, GrowlModule
   ],
   providers: [],
   //bootstrap: [AppComponent]

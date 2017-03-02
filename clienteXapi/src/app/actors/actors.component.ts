@@ -8,7 +8,10 @@ import {RestService} from '../servicios/rest.service';
   providers: [RestService]
 })
 export class ActorsComponent implements OnInit {
-  title = 'Actors';
+  selecionarActor: boolean = false;
+  selecionarVerbo: boolean = false;
+
+  title = 'Seleccione un "actor" ';
   title2 = 'Verbs';
   title3 = 'Targets';
       //Variables para servicios rest

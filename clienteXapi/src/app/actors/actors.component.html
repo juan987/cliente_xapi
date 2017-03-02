@@ -1,12 +1,14 @@
 <div class="container" id="contenedor">
-  <h3>
-  {{title}}
-  </h3>
-  <input type="button" class="btn btn-primary" id="recargaColeccionActors" value="Refrescar coleccion de Actors" (click)="clickRecargaColeccionActors()"/>
+
   <br/>
   <br/>
+  <input type="button" class="btn btn-primary" id="selecionarActor" value="Seleccionar actor" 
+                    (click)="selecionarActor = !selecionarActor"/>
   <!-- Tabla mostrando la DB de Actors -->
-    <section id="tablaPeliculas">
+    <section id="tablaPeliculas" *ngIf="selecionarActor">
+        <h4>
+        {{title}}
+        </h4>
         <!-- table border="2" -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover table-condensed">                
@@ -29,14 +31,15 @@
         </div>
     </section>
 
-  <h3>
-  {{title2}}
-  </h3>
-  <input type="button" class="btn btn-primary " id="recargaColeccionActors" value="Refrescar coleccion de Verbs" (click)="clickRecargaColeccionActors()"/>
   <br/>
   <br/>
   <!-- Tabla mostrando la DB de Verbos -->
-    <section id="tablaPeliculas">
+    <input type="button" class="btn btn-primary" id="selecionarVerbo" value="Seleccionar verbo" 
+                    (click)="selecionarVerbo = !selecionarVerbo"/>
+    <section id="tablaPeliculas" *ngIf="selecionarVerbo">
+        <h4>
+         {{title2}}
+       </h4>
         <!-- table border="2" -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover table-condensed">                

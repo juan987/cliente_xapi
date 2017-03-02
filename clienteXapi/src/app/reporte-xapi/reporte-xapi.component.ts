@@ -24,7 +24,7 @@ actividadClickadaEnActivityTree: string;
 
 
 
-    title = 'API de informes';
+    title = 'API de informes con Xapi';
     //Variables para servicios rest
     errorMessage: string;
     learningReport1: any[];

@@ -30,7 +30,9 @@ export class ActivityTreeComponent implements OnInit {
   //Este valor lo paso a reporte-axi al hacer click en una actividad en el arbol
   @Output() datoDeTreeComponent = new EventEmitter<string>();
 
-  title = 'Arbol de actividades';
+
+  selecionarActivity: boolean= false;
+  title = 'Seleccione un "activity" (también llamadas targets u objects)';
   //arbolJson: {hola: 'kkk'};
   errorMessage: string;
 

@@ -1,5 +1,9 @@
 <div class="container" id="contenedor">
-
+  <br/>
+  <br/>
+  <h1>
+  {{title}}
+  </h1>
 
     <!-- Cargar el modulo de arbol de actividades -->
     <!-- escuchamos la acividad clickada en el arbol -->
@@ -10,9 +14,6 @@
                 (emitterDelActor)="emitterDelActor($event)"
                  (emitterDelVerb)="emitterDelVerb($event)"> Cargando Actors ui </app-actors>
 
-  <h1>
-  {{title}}
-  </h1>
     <h1>Formulario de reportes de xAPI</h1>
 	<form role="form" class="form-horizontal" #form="ngForm" id="miFormulario" action="#">
     <fieldset>

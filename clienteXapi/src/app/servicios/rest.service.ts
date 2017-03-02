@@ -28,7 +28,7 @@ export class RestService {
   }
 
 
-  getArbolDeActividades(): Observable<TreeNode[]>{
+  getArbolDeActividades(): Observable<any[]>{
     return this.http.get(this.urlGet4)
                     .map(this.extractData)
                     .catch(this.handleError);

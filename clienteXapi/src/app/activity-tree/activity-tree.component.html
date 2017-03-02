@@ -11,13 +11,23 @@
       <h3>Horizontal Tree</h3>
       <p-tree [value]="filesTree8" layout="horizontal" selectionMode="single" [(selection)]="selectedFile3" ></p-tree>
       <div style="margin-top:8px">Selected Node: {{selectedFile3 ? selectedFile3.label : 'none'}}</div>
+
+
+        <div class="elementoOculto"  >
+            <h3>Single Selection</h3>
+            <p-tree [value]="filesTree2" selectionMode="single" [(selection)]="selectedFile" 
+                (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)"></p-tree>
+            <div style="margin-top:8px">Selected Node: {{selectedFile ? selectedFile.label : 'none'}}</div>
+        </div>
+     <!--h3 class="first">Basic</h3>
+     <p-tree [value]="filesTree1"></p-tree-->
   </div>
 </div>
 
 
-<p-treeTable [value]="files1">
+<!--p-treeTable [value]="files1">
     <p-header>Basic</p-header>
     <p-column field="name" header="Name"></p-column>
     <p-column field="size" header="Size"></p-column>
     <p-column field="type" header="Type"></p-column>
-</p-treeTable>
+</p-treeTable-->

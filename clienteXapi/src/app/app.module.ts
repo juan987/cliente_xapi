@@ -13,6 +13,7 @@ import { ActivityTreeComponent } from './activity-tree/activity-tree.component';
 
 //Para PrimeNg, sin esto no me funcionaba
 import {TreeModule, GrowlModule} from 'primeng/primeng';
+import {TreeTableModule,SharedModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {TreeModule, GrowlModule} from 'primeng/primeng';
     HttpModule,
     JsonpModule ,
     ReactiveFormsModule,
-    TreeModule, GrowlModule
+    TreeModule, GrowlModule, TreeTableModule,SharedModule
+
   ],
   providers: [],
   //bootstrap: [AppComponent]

@@ -10,7 +10,10 @@ import {Growl} from 'primeng/primeng';
 import {Message,MenuItem,TreeNode} from 'primeng/primeng';
 import {Tree} from 'primeng/primeng';
 
-import {TreeTableModule,SharedModule} from 'primeng/primeng';
+//import {TreeTableModule,SharedModule} from 'primeng/primeng';
+import {TreeTable} from 'primeng/primeng';
+
+import {TreeModule} from 'primeng/primeng';
 
 
 
@@ -61,10 +64,31 @@ export class ActivityTreeComponent implements OnInit {
 
   ngOnInit() {
     this.getArbolActividades();
+    this.getArbolActividades2();
+
+    /*
+    this.filesTree2 = this.datos.data;
+    this.filesTree8 = [{
+                        label: 'Root',
+                        children: this.datos.data
+                    }];
+    */
+
     this.items = [
         {label: 'View', icon: 'fa-search', command: (event) => this.viewFile(this.selectedFile2)},
         {label: 'Unselect', icon: 'fa-close', command: (event) => this.unselectFile()}
     ];
+  }
+
+
+getArbolActividades2(){
+      this.restService.getArbolDeActividades()
+              .subscribe(
+                arbolJson => {this.filesTree2 = arbolJson;
+
+                                  console.log('El arbol filesTree1 tiene estos datos:  ', this.filesTree1);
+                               },
+                error =>  this.errorMessage = <any>error);
   }
 
 
@@ -73,25 +97,15 @@ getArbolActividades(){
               .subscribe(
                 //arbolJson => {this.arbolJson = arbolJson;
                 arbolJson => {this.filesTree8 = [{
-                                                    label: 'Root',
-                                                    children: arbolJson
-                                                }];
-                                  console.log('El arbol tiene estos datos:  ', this.filesTree8);
+                                    label: 'Root',
+                                    children: arbolJson
+                                }];
+                                  console.log('El arbol filesTree8 tiene estos datos:  ', this.filesTree8);
                                },
                 error =>  this.errorMessage = <any>error);
   }
-
-/*
-getArbolActividades(){
-      this.restService.getArbolDeActividades()
-              .subscribe(
-                //arbolJson => {this.arbolJson = arbolJson;
-                arbolJson => {this.filesTree8 = arbolJson;
-                                  console.log('El arbol tiene estos datos:  ', this.filesTree8);
-                               },
-                error =>  this.errorMessage = <any>error);
-  }
-  */
+  
+  
 
     
     
@@ -126,6 +140,18 @@ getArbolActividades(){
         this.selectedFile2 = null;
     }
 
+    expandAll(){
+        this.filesTree6.forEach( node => {
+            this.expandRecursive(node, true);
+        } );
+    }
+
+    collapseAll(){
+        this.filesTree6.forEach( node => {
+            this.expandRecursive(node, false);
+        } );
+    }
+
     private expandRecursive(node:TreeNode, isExpand:boolean){
         node.expanded = isExpand;
         if(node.children){
@@ -134,4 +160,59 @@ getArbolActividades(){
             } );
         }
     }
+
+//***************************************************
+//Json de prueba
+datos = {
+    "data": 
+    [
+        {
+            "label": "Documents",
+            "data": "Documents Folder",
+            "expandedIcon": "fa-folder-open",
+            "collapsedIcon": "fa-folder",
+            "children": [{
+                    "label": "Work",
+                    "data": "Work Folder",
+                    "expandedIcon": "fa-folder-open",
+                    "collapsedIcon": "fa-folder",
+                    "children": [{"label": "Expenses.doc", "icon": "fa-file-word-o", "data": "Expenses Document"}, {"label": "Resume.doc", "icon": "fa-file-word-o", "data": "Resume Document"}]
+                },
+                {
+                    "label": "Home",
+                    "data": "Home Folder",
+                    "expandedIcon": "fa-folder-open",
+                    "collapsedIcon": "fa-folder",
+                    "children": [{"label": "Invoices.txt", "icon": "fa-file-word-o", "data": "Invoices for this month"}]
+                }]
+        },
+        {
+            "label": "Pictures",
+            "data": "Pictures Folder",
+            "expandedIcon": "fa-folder-open",
+            "collapsedIcon": "fa-folder",
+            "children": [
+                {"label": "barcelona.jpg", "icon": "fa-file-image-o", "data": "Barcelona Photo"},
+                {"label": "logo.jpg", "icon": "fa-file-image-o", "data": "PrimeFaces Logo"},
+                {"label": "primeui.png", "icon": "fa-file-image-o", "data": "PrimeUI Logo"}]
+        },
+        {
+            "label": "Movies",
+            "data": "Movies Folder",
+            "expandedIcon": "fa-folder-open",
+            "collapsedIcon": "fa-folder",
+            "children": [{
+                    "label": "Al Pacino",
+                    "data": "Pacino Movies",
+                    "children": [{"label": "Scarface", "icon": "fa-file-video-o", "data": "Scarface Movie"}, {"label": "Serpico", "icon": "fa-file-video-o", "data": "Serpico Movie"}]
+                },
+                {
+                    "label": "Robert De Niro",
+                    "data": "De Niro Movies",
+                    "children": [{"label": "Goodfellas", "icon": "fa-file-video-o", "data": "Goodfellas Movie"}, {"label": "Untouchables", "icon": "fa-file-video-o", "data": "Untouchables Movie"}]
+                }]
+        }
+    ]
+}
+
 }//Fin de la clase

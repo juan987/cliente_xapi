@@ -29,9 +29,9 @@
                     <input type="text" #name="ngModel" class="form-control" id="name" name="name" required [(ngModel)]="datosForm.name"/>
                     <!-- Mensaje de error para titulo-->
                     <br/>
-                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    <!--div [hidden]="name.valid || name.pristine" class="alert alert-danger">
                                 Nombre requerido
-                    </div>
+                    </div-->
                 </div>
             </div>
 
@@ -42,9 +42,9 @@
                     <input type="text" #verbo="ngModel" class="form-control" id="verbo" name="verbo" required [(ngModel)]="datosForm.verb" />
                 <!-- Mensaje de error para director-->
                     <br/>
-                    <div [hidden]="verbo.valid || verbo.pristine" class="alert alert-danger">
+                    <!--div [hidden]="verbo.valid || verbo.pristine" class="alert alert-danger">
                                 Verbo requerido
-                    </div>
+                    </div-->
                 </div>
             </div>
 
@@ -54,9 +54,9 @@
                     <input type="text" #actividad="ngModel" class="form-control" id="actividad" name="actividad" required [(ngModel)]="datosForm.activity" />
                 <!-- Mensaje de error para director-->
                     <br/>
-                    <div [hidden]="actividad.valid || actividad.pristine" class="alert alert-danger">
+                    <!--div [hidden]="actividad.valid || actividad.pristine" class="alert alert-danger">
                                 Actividad requerida
-                    </div>
+                    </div-->
                 </div>
             </div>
 
@@ -93,9 +93,12 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input type="reset" class="btn btn-primary" 
-                                        (click)="muestraBotonesModAndDel = true; learningReport1 = null"> 
-                <input type="button" class="btn btn-primary" id="guardar" value="Generar reporte" (click)="clickGeneraInforme(); form.reset()"/>
+                <!--input type="reset" class="btn btn-primary" 
+                                        (click)="learningReport1 = null"--> 
+
+                <input type="button" class="btn btn-primary" value="Reset"
+                                        (click)="clickReset()">
+                <input type="button" class="btn btn-primary" id="guardar" value="Generar reporte" (click)="clickGeneraInforme();"/>
                 <!--input type="button" class="btn btn-primary" id="modificar" value="Modificar" 
                                         (click)="clickModificar(); form.reset()" [disabled]="muestraBotonesModAndDel" />
                 <input type="button" class="btn btn-primary" id="borrar" value="Borrar" 

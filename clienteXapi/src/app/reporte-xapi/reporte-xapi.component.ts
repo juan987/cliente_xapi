@@ -89,6 +89,28 @@ actividadClickadaEnActivityTree: string;
       console.log("Click en el boton generar informe");
       console.log('Los datos de busqueda son: ', this.datosForm.toString())
       this.getReport_1(this.datosForm);
+      //reseteo los campos del formulario
+      /*this.datosForm.name = "";
+      this.datosForm.verb = "";
+      this.datosForm.activity = "";
+      this.datosForm.date1 = "";
+      this.datosForm.date2 = "";*/
+
+      //Quito el form reset del boton de submit linea 98
+      //(click)="clickGeneraInforme(); form.reset()"
+
+      //quito el muestraBotonesModAndDel del boton reset
+      //(click)="muestraBotonesModAndDel = true; learningReport1 = null"
+
+
+      //this.datosForm = null;
+      //this.datosForm = new DatosForm("","","","","");
+    }
+
+    clickReset(){
+      this.learningReport1 = null;  
+      this.datosForm = null; 
+      this.datosForm = new DatosForm("","","","","");
     }
 
     //Metodos relacionados con http

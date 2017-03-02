@@ -17,8 +17,9 @@
                         <th>objectType</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let datoActor of arrayActors, let i = index;">
+                <tbody> 
+                    <tr *ngFor="let datoActor of arrayActors, let i = index;"  
+                                (click)="clickEnTablaActor(datoActor, i); ">
                       <td>{{datoActor.actor.name}}</td>
                       <td>{{datoActor.actor.mbox}}</td>
                       <td>{{datoActor.actor.objectType}}</td>
@@ -43,11 +44,12 @@
                     <tr>
                         <th>Syllabus</th>
                         <th>URI</th>
-                        <th>Tipo</th>
+                        <th>objectType</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let datoVerbo of arrayVerbos, let i = index;">
+                    <tr *ngFor="let datoVerbo of arrayVerbos, let i = index;"
+                                (click)="clickEnTablaVerbs(datoVerbo, i); ">
                       <td>{{datoVerbo.verbo.display}}</td>
                       <td>{{datoVerbo.verbo.id}}</td>
                       <td>{{datoVerbo.verbo.LOG_SRC}}</td>
@@ -57,6 +59,7 @@
         </div>
     </section>
 
+ <div  class="elementoOculto"  >
   <h3>
   {{title3}}
   </h3>
@@ -64,7 +67,7 @@
   <br/>
   <br/>
   <!-- Tabla mostrando la DB de Targets/objects -->
-    <section id="tablaPeliculas">
+    <section id="tablaPeliculas"  >
         <!-- table border="2" -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover table-condensed">                
@@ -87,4 +90,5 @@
             </table>
         </div>
     </section>
+  </div>
 </div>

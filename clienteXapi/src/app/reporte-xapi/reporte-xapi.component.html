@@ -2,10 +2,13 @@
 
 
     <!-- Cargar el modulo de arbol de actividades -->
-    <app-activity-tree> Cargando Actors ui </app-activity-tree>
+    <!-- escuchamos la acividad clickada en el arbol -->
+    <app-activity-tree (datoDeTreeComponent)="datoDeTreeComponent($event)"> Cargando Actors ui </app-activity-tree>
 
     <!-- Cargar el modulo de tabla de actors -->
-    <app-actors> Cargando Actors ui </app-actors>
+    <app-actors
+                (emitterDelActor)="emitterDelActor($event)"
+                 (emitterDelVerb)="emitterDelVerb($event)"> Cargando Actors ui </app-actors>
 
   <h1>
   {{title}}
@@ -40,19 +43,31 @@
                 <!-- Mensaje de error para director-->
                     <br/>
                     <div [hidden]="verbo.valid || verbo.pristine" class="alert alert-danger">
-                                Director requerido
+                                Verbo requerido
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
+                <label for="actividad" class="col-sm-2 control-label">Actividad</label> 
+                <div class="col-sm-10">
+                    <input type="text" #actividad="ngModel" class="form-control" id="actividad" name="actividad" required [(ngModel)]="datosForm.activity" />
+                <!-- Mensaje de error para director-->
+                    <br/>
+                    <div [hidden]="actividad.valid || actividad.pristine" class="alert alert-danger">
+                                Actividad requerida
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group elementoOculto">
                 <label for="fecha1" class="col-sm-2 control-label">Fecha inicial</label> 
                 <div class="col-sm-10">
                     <input type="date" class="form-control" id="fecha1" name="fecha1" required [(ngModel)]="datosForm.date1"/>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group elementoOculto">
                 <label for="fecha2" class="col-sm-2 control-label">Fecha final</label> 
                 <div class="col-sm-10">
                     <input type="date" class="form-control" id="fecha2" name="fecha2" required [(ngModel)]="datosForm.date2"/>
@@ -115,17 +130,6 @@
         </form>      
     </div>
 
-    <!--div id="autocompleteVerbo">
-        <form  [formGroup]="searchForm">
-            <label for="searchField">Buscar "verbo" por URI (Autocomplete)</label>
-            <br/>
-            <input type="text" id="searchField" name="searchField"
-                                        [formControl]="searchForm.controls['searchField']"> 
-            <ul>
-                <li *ngFor="let result of results | async" (click)="clickGuardarNombre(result)">{{result.actor.name}}</li>
-            </ul>     
-        </form>   
-    </div-->
 
     <!-- Reporte 1-->
     <br/>

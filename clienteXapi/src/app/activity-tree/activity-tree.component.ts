@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import {RestService} from '../servicios/rest.service';
 
 //tree de PrimeNg
@@ -26,6 +26,10 @@ import {TreeModule} from 'primeng/primeng';
   providers: [RestService]
 })
 export class ActivityTreeComponent implements OnInit {
+
+  //Este valor lo paso a reporte-axi al hacer click en una actividad en el arbol
+  @Output() datoDeTreeComponent = new EventEmitter<string>();
+
   title = 'Arbol de actividades';
   //arbolJson: {hola: 'kkk'};
   errorMessage: string;
@@ -109,9 +113,12 @@ getArbolActividades(){
 
     
     
-    nodeSelect(event) {
-        this.msgs = [];
-        this.msgs.push({severity: 'info', summary: 'Node Selected', detail: event.node.label});
+    nodeSelect(event) {//No muestro el mensaje con p-growl
+        //this.msgs = [];
+        //this.msgs.push({severity: 'info', summary: 'Node Selected', detail: event.node.label});
+        //Aqui pongo el emisor de eventos
+        this.datoDeTreeComponent.emit(event.node.label);
+
     }
     
     nodeUnselect(event) {

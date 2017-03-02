@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 // Add the RxJS Observable operators. para gestionar HTTP
 import './rxjs-operators';
 import {DatosForm} from '../modelo-datos/datos-form';
@@ -18,6 +18,12 @@ import { Http, Response } from '@angular/http';
   providers: [RestService]
 })
 export class ReporteXapiComponent implements OnInit {
+//Bind con el dato clickado en el component activity-tree
+actividadClickadaEnActivityTree: string;
+
+
+
+
     title = 'API de informes';
     //Variables para servicios rest
     errorMessage: string;
@@ -47,11 +53,37 @@ export class ReporteXapiComponent implements OnInit {
     //***********************************
     // FIN de Autocomplete
     //***********************************
-      this.datosForm = new DatosForm("","","","");
+      this.datosForm = new DatosForm("","","","","");
+      
     }//Fin del constructor
 
     ngOnInit() {
     }
+
+    //******************************************
+    //Emitters
+    //******************************************
+    //Emiter recibido de activity-tree.component
+    datoDeTreeComponent(actividad: string) {
+      this.datosForm.activity = actividad;
+      console.log('La actividad clickada en activity-tree component es: ', actividad);
+    }
+
+    //Emiter recibido con el dato del Actor
+    emitterDelActor(datoActor: string) {
+      this.datosForm.name = datoActor;
+      console.log('El Actor clickado en actors.component es: ', datoActor);
+    }
+
+    //Emiter recibido con el dato del Verbo
+    emitterDelVerb(datoVerbo: string) {
+      this.datosForm.verb = datoVerbo;
+      console.log('El Verbo clickado en actors.component es: ', datoVerbo);
+    }
+
+    //******************************************
+    //Fin de Emitters
+    //******************************************
 
     clickGeneraInforme(): void{
       console.log("Click en el boton generar informe");

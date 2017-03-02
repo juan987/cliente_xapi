@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import {RestService} from '../servicios/rest.service';
 
 @Component({
@@ -79,6 +79,18 @@ getActores(){
     //TODO: forzar al server a recargar la coleccion de Actors
   }
 
+  //************************************
+  //Emiters
+  //Este valor lo paso a reporte-axi al hacer click en una fila de la tabla Actors
+  @Output() emitterDelActor = new EventEmitter<string>();
+  clickEnTablaActor(datoActor, i){
+    this.emitterDelActor.emit(datoActor.actor.name);
+  }
 
+  //Este valor lo paso a reporte-axi al hacer click en una fila de la tabla Verbos
+  @Output() emitterDelVerb = new EventEmitter<string>();
+  clickEnTablaVerbs(datoVerbo, i){
+    this.emitterDelVerb.emit(datoVerbo.verbo.id);
+  }
 
 }

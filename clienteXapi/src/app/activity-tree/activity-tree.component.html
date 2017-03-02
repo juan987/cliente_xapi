@@ -8,8 +8,8 @@
   <div class="content-section implementation">
       <p-growl [value]="msgs"></p-growl>
 
-      <h3>Horizontal Tree</h3>
-      <p-tree [value]="filesTree8" layout="horizontal" selectionMode="single" [(selection)]="selectedFile3" ></p-tree>
+      <p-tree [value]="filesTree8" (onNodeSelect)="nodeSelect($event)"
+            layout="horizontal" selectionMode="single" [(selection)]="selectedFile3" ></p-tree>
       <div style="margin-top:8px">Selected Node: {{selectedFile3 ? selectedFile3.label : 'none'}}</div>
 
 

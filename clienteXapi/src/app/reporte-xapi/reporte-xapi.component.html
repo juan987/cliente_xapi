@@ -111,7 +111,9 @@
 	</form>
     <!-- Autocomplete nombres-->
     <br/>
-    <div id="autocomplete">
+
+    <!-- EL AUTOCOMPLETE NO SE MUESTRA, FUE USADO PARA DEBUGGING -->
+    <div id="autocomplete" *ngIf="false">
         <form  [formGroup]="searchForm" >
             <label for="searchField">Buscar "actor" por nombre (Autocomplete)</label>
             <br/>

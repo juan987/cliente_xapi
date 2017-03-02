@@ -86,14 +86,18 @@ getActores(){
   //Emiters
   //Este valor lo paso a reporte-axi al hacer click en una fila de la tabla Actors
   @Output() emitterDelActor = new EventEmitter<string>();
+
   clickEnTablaActor(datoActor, i){
     this.emitterDelActor.emit(datoActor.actor.name);
+    this.selecionarActor= !this.selecionarActor;
   }
 
   //Este valor lo paso a reporte-axi al hacer click en una fila de la tabla Verbos
   @Output() emitterDelVerb = new EventEmitter<string>();
+
   clickEnTablaVerbs(datoVerbo, i){
     this.emitterDelVerb.emit(datoVerbo.verbo.id);
+    this.selecionarVerbo= !this.selecionarVerbo;
   }
 
 }

@@ -48,8 +48,8 @@ actividadClickadaEnActivityTree: string;
     //para los temas de 
     // ReactiveFormsModule gives us directives like formControl and ngFormGroup
     //******************************************************************************************* 
-      this.activarAutocompleteDeNombre()
-      this.activarAutocompleteDeVerbos()
+      //this.activarAutocompleteDeNombre()
+      //this.activarAutocompleteDeVerbos()
     //***********************************
     // FIN de Autocomplete
     //***********************************

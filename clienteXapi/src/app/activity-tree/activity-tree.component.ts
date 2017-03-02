@@ -118,9 +118,8 @@ getArbolActividades(){
     nodeSelect(event) {//No muestro el mensaje con p-growl
         //this.msgs = [];
         //this.msgs.push({severity: 'info', summary: 'Node Selected', detail: event.node.label});
-        //Aqui pongo el emisor de eventos
+        //Aqui pongo el emisor de eventos, PARA RELLENAR EL DATO ACTIVIDAD DEL FORMULARIO
         this.datoDeTreeComponent.emit(event.node.label);
-
     }
     
     nodeUnselect(event) {

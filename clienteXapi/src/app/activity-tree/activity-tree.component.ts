@@ -103,7 +103,7 @@ getArbolActividades(){
               .subscribe(
                 //arbolJson => {this.arbolJson = arbolJson;
                 arbolJson => {this.filesTree8 = [{
-                                    label: 'Root',
+                                    label: 'Actividades',
                                     children: arbolJson
                                 }];
                                   console.log('El arbol filesTree8 tiene estos datos:  ', this.filesTree8);
@@ -120,6 +120,8 @@ getArbolActividades(){
         //this.msgs.push({severity: 'info', summary: 'Node Selected', detail: event.node.label});
         //Aqui pongo el emisor de eventos, PARA RELLENAR EL DATO ACTIVIDAD DEL FORMULARIO
         this.datoDeTreeComponent.emit(event.node.label);
+        //Cierra
+        this.selecionarActivity = !this.selecionarActivity;
     }
     
     nodeUnselect(event) {
